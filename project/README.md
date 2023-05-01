@@ -41,9 +41,9 @@ jupyter/pyspark-notebook
 # to run the server
 $ python server.py
 ```
-Here, we provide a simple way to stream news articles from the News API to a client in real-time using a socket connection. This code could be used for a variety of applications, such as news aggregation or sentiment analysis.The code starts by defining the News API key and the port number for the socket connection. It then defines a function called "fetch_articles" which sends a GET request to the News API endpoint and retrieves the top news articles from the US. 
+Here, we provide a simple way to stream news articles from the News API to a client in real-time using a socket connection. This code could be used for a variety of applications, such as news aggregation or sentiment analysis.The code starts by defining the News API key and the port number for the socket connection. It then defines a function called *"fetch_articles"* which sends a GET request to the News API endpoint and retrieves the top news articles from the US. 
 
-In the main function we set up a server socket to listen for incoming connections on the specified port number. When a client connects to the server, the function enters a loop and continuously fetches articles from the News API using the "fetch_articles" function. For each article, it converts the JSON data into a string and sends it to the client using the client socket. The function prints out the article and the message that was sent for debugging purposes.
+In the main function we set up a server socket to listen for incoming connections on the specified port number. When a client connects to the server, the function enters a loop and continuously fetches articles from the News API using the *"fetch_articles"* function. For each article, it converts the JSON data into a string and sends it to the client using the client socket. The function prints out the article and the message that was sent for debugging purposes.
 
 The function then waits for one second before sending the next article to the client. After all the articles have been sent, the function waits for two minutes before fetching new articles from the News API. This process continues until the program is terminated.
 ```bash
@@ -67,9 +67,9 @@ Click to the one of the generated links (preferrable the one running on the loca
 $ python scatter.py
 ```
 
-The code is designed to create a web application using Dash, a Python framework for building analytical web applications. The application displays a scatter/bar plot of the average sentiment per cluster based on data loaded from a CSV file called 'predictions.csv'. The data is updated in real-time. 
+The code is designed to create a web application using Dash, a Python framework for building analytical web applications. The application displays a scatter/bar plot of the average sentiment per cluster based on data loaded from a CSV file called *'predictions.csv'*. The data is updated in real-time. 
 
-The layout of the app is defined using HTML and CSS styles. It includes a title, a button to reload the data, and a scatter plot. The scatter plot is created using the dcc.Graph component from Dash Core Components and is assigned the ID 'sentiment-per-cluster'.
+The layout of the app is defined using HTML and CSS styles. It includes a title, a button to reload the data, and a scatter plot. The scatter plot is created using the dcc.Graph component from Dash Core Components and is assigned the ID *'sentiment-per-cluster'*.
 
 We define a callback function to update the bar/scatter plot when the reload button is clicked. The callback function takes the number of clicks on the reload button as an input and outputs an updated bar/scatter plot based on the updated data from the CSV file. The function calculates the average sentiment per cluster using the Pandas groupby function and creates a scatter plot using the Plotly Express library. The scatter plot is customized to show different colors for each cluster and is updated with a new title and axis labels.
 
