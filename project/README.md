@@ -58,7 +58,7 @@ We use Spark Streaming to perform sentiment analysis on news articles in real-ti
 # to run the bar-plot visualizations
 $ python visualize.py
 ```
-Click to the one of the generated links (preferrable the one running on the localhost: http://127.0.0.1:8050)
+Click to the one of the generated links (the one running on the localhost: http://127.0.0.1:8050 works)
 
 <img width="904" alt="Screenshot 2023-05-01 at 10 54 42 AM" src="https://user-images.githubusercontent.com/118912928/235431634-6fefc9e3-abf7-49a9-ab20-03b88e73e7d7.png">
 
