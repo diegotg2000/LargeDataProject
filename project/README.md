@@ -56,11 +56,12 @@ $ python visualize.py
 $ python scatter.py
 ```
 <img width="1414" alt="Screenshot 2023-05-01 at 10 48 12 AM" src="https://user-images.githubusercontent.com/118912928/235431152-5ec7167f-5d32-42c0-a45f-5804e675209a.png">
+```bash
 # click to the one of the generated links (preferrable the one running on the localhost: http://127.0.0.1:8050)
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:8050
- * Running on http://172.17.0.2:8050
- 
+# * Running on all addresses (0.0.0.0)
+# * Running on http://127.0.0.1:8050
+# * Running on http://172.17.0.2:8050
+```
 The code is designed to create a web application using Dash, a Python framework for building analytical web applications. The application displays a scatter/bar plot of the average sentiment per cluster based on data loaded from a CSV file called 'predictions.csv'. The data is updated in real-time. 
 
 The layout of the app is defined using HTML and CSS styles. It includes a title, a button to reload the data, and a scatter plot. The scatter plot is created using the dcc.Graph component from Dash Core Components and is assigned the ID 'sentiment-per-cluster'.
