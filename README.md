@@ -74,9 +74,7 @@ We define a callback function to update the scatter plot and the titles of the b
 
 The app is run on a local server using the app.run_server() function with host, debug, and port settings. The app can be accessed through a web browser at the specified port. 
 
-
- <img width="1427" alt="Screenshot 2023-05-01 at 10 48 23 AM" src="https://user-images.githubusercontent.com/118912928/235431144-6122884e-be74-43f1-a38a-00c0a2e2706d.png">
-<img width="1414" alt="Screenshot 2023-05-01 at 10 48 12 AM" src="https://user-images.githubusercontent.com/118912928/235431152-5ec7167f-5d32-42c0-a45f-5804e675209a.png">
+<img width="904" alt="Screenshot 2023-05-01 at 10 54 42 AM" src="https://user-images.githubusercontent.com/46940818/235467554-d3ba80bb-06c3-4414-b461-d49c812c27b4.png">
 
 
 
