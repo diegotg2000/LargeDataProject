@@ -57,15 +57,13 @@ We use Spark Streaming to perform sentiment analysis on news articles in real-ti
 ```bash
 # to run the bar-plot visualizations
 $ python visualize.py
+
+# to run the scatter-plot visualizations
+$ python scatter.py
 ```
 Click to the one of the generated links (the one running on the localhost: http://127.0.0.1:8050 works)
 
 <img width="904" alt="Screenshot 2023-05-01 at 10 54 42 AM" src="https://user-images.githubusercontent.com/118912928/235431634-6fefc9e3-abf7-49a9-ab20-03b88e73e7d7.png">
-
-```bash
-# to run the scatter-plot visualizations
-$ python scatter.py
-```
 
 The code is designed to create a web application using Dash, a Python framework for building analytical web applications. The application displays a scatter/bar plot of the average sentiment per cluster based on data loaded from a CSV file called *'predictions.csv'*. The data is updated in real-time. 
 
