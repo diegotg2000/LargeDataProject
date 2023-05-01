@@ -40,10 +40,18 @@ jupyter/pyspark-notebook
 ```bash
 # to run the server
 $ python server.py
+```
+Here, we provide a simple way to stream news articles from the News API to a client in real-time using a socket connection. This code could be used for a variety of applications, such as news aggregation or sentiment analysis.The code starts by defining the News API key and the port number for the socket connection. It then defines a function called "fetch_articles" which sends a GET request to the News API endpoint and retrieves the top news articles from the US. 
 
+In the main function we set up a server socket to listen for incoming connections on the specified port number. When a client connects to the server, the function enters a loop and continuously fetches articles from the News API using the "fetch_articles" function. For each article, it converts the JSON data into a string and sends it to the client using the client socket. The function prints out the article and the message that was sent for debugging purposes.
+
+The function then waits for one second before sending the next article to the client. After all the articles have been sent, the function waits for two minutes before fetching new articles from the News API. This process continues until the program is terminated.
+```bash
 # to run spark streaming 
 $ python analyze.py
 ```
+We use Spark Streaming to perform sentiment analysis on news articles in real-time using TextBlob library. We retrieve articles via a socket connection (described above) and perform sentiment analysis on each article. For that we implement the "sentiment_analysis" function which is using TextBlob, and add the sentiment score to the article. The sentiment score ranges from -1 to 1, with negative scores indicating negative sentiment and positive scores indicating positive sentiment. We use these sentiment scores in streaming k-means clustering to group the articles based on their sentiment. The code prints and saves the cluster number along with the article's title and sentiment score to a CSV file. The resulting solution provides a scalable solution for monitoring news sentiment in real-time.
+
 ### Step 3: Visualize data [scatter/bar plot]
 
 The code is designed to create a web application using Dash, a Python framework for building analytical web applications. The application displays a scatter/bar plot of the average sentiment per cluster based on data loaded from a CSV file called 'predictions.csv'. The data is updated in real-time. 
