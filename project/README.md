@@ -75,9 +75,7 @@ The app is run on a local server using the app.run_server() function with host, 
 
 **NOTE:** To run the visualizations, you need to specify the correct port in the code. If you indicate -p 8050:8050 when creating docker container, you should specify 8050 in the script. 
 
-
  <img width="1427" alt="Screenshot 2023-05-01 at 10 48 23 AM" src="https://user-images.githubusercontent.com/118912928/235431144-6122884e-be74-43f1-a38a-00c0a2e2706d.png">
- 
 <img width="1414" alt="Screenshot 2023-05-01 at 10 48 12 AM" src="https://user-images.githubusercontent.com/118912928/235431152-5ec7167f-5d32-42c0-a45f-5804e675209a.png">
 
 
