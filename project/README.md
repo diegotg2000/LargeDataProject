@@ -32,7 +32,7 @@ $ docker exec -it sparklab bash
 
 # if you haven't install the image
 $ docker run --name sparklab -it --rm --user root -e GRANT_SUDO=yes \
--p 8888:8888 -p 4040:4040 -p 4041:4041 \
+-p 8888:8888 -p 4040:4040 -p 4041:4041 -p 8050:8050 \
 jupyter/pyspark-notebook
 ```
 
