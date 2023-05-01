@@ -7,7 +7,7 @@ from textblob import TextBlob
 import json
 import re
 import csv
-
+import pandas as pd
 
 PORT = 9998
 
@@ -35,16 +35,20 @@ def print_predictions(time, rdd):
         
 def save_predictions(time, rdd):
     print('Saving to file...')
-    filename = 'predictions.csv'
+    current_file = pd.read_csv('predictions.csv')
     rows = []
     for prediction in rdd.collect():
         (title, sentiment), cluster = prediction
         rows.append([title, sentiment, cluster])
         
-    with open(filename, 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(['Title', 'Sentiment', 'Cluster'])
-        writer.writerows(rows)
+    new_file = pd.DataFrame(rows, columns=['Title', 'Sentiment', 'Cluster'])
+    
+    print(new_file)
+    
+    print(current_file)
+        
+    updated_file = pd.concat([current_file[~current_file['Title'].isin(new_file['Title'])], new_file], axis=0, ignore_index=True)
+    updated_file.to_csv('predictions.csv', index=False)
             
             
 
