@@ -56,7 +56,8 @@ The app is run on a local server using the app.run_server() function with host, 
 
 To run the visualizations, you need to specify the correct port in the code. If you indicate -p 8050:8050 when creating docker container, you should specify 8050 in the script. 
 
-After the link is generated, click and view it on the new tab.
+Click to the one of the generated links (preferrable the one running on the localhost: http://127.0.0.1:8050)
+<img width="904" alt="Screenshot 2023-05-01 at 10 54 42 AM" src="https://user-images.githubusercontent.com/118912928/235431634-6fefc9e3-abf7-49a9-ab20-03b88e73e7d7.png">
 
 ```bash
 # to run the bar-plot visualizations
@@ -69,9 +70,6 @@ $ python visualize.py
 $ python scatter.py
 ```
 <img width="1414" alt="Screenshot 2023-05-01 at 10 48 12 AM" src="https://user-images.githubusercontent.com/118912928/235431152-5ec7167f-5d32-42c0-a45f-5804e675209a.png">
-
-click to the one of the generated links (preferrable the one running on the localhost: http://127.0.0.1:8050)
-<img width="904" alt="Screenshot 2023-05-01 at 10 54 42 AM" src="https://user-images.githubusercontent.com/118912928/235431634-6fefc9e3-abf7-49a9-ab20-03b88e73e7d7.png">
 
 
 
