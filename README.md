@@ -11,12 +11,11 @@ This project involves processing API data as a stream, performing sentiment anal
 
 ## Project Structure
 - `server.py` : Python server script to connect to the API and send individual messages to a socket.
-- `spark.py` and `analyze.py` : Spark Streaming script to read data, perform sentiment analysis, clustering, and window operations.
-- `main.ipynb` : Jupyter Notebook for visualizing the cluster sizes in sliding windows.
-- `scatter.py`: Run cluster visualizations (scatter-plot) in real-time, refreshes when the button is pressed.
-- `visualize.py`: Run cluster visualizations (bar-plot) in real-time, refreshes when the button is pressed.
+- `analyze.py` : Spark Streaming script to read data, perform sentiment analysis, clustering, and window operations.
+- `visualize.py`: Run cluster visualizations (scatter-plot) in real-time, refreshes when the button is pressed.
 
 ## Requirements
+- Docker
 - Python 3.x
 - Pyspark
 - TextBlob
@@ -25,16 +24,21 @@ This project involves processing API data as a stream, performing sentiment anal
 - Dash
 
 ## Instructions
-### Step 1: Set up the API and Python server
-Register and obtain access to [NEWS API](https://newsapi.org/) and run Docker with the following command : 
+### Step 1: Get and set the API key
+Register and obtain access to [NEWS API](https://newsapi.org/), change the `NEWSAPI_KEY` variable of `server.py` with your API key (don't use ours more than a couple times please :3)
+### Step 2: Set up the docker
+At the same level as the docker file run:
 ```bash
-$ docker exec -it sparklab bash
-
-# if you haven't install the image
-$ docker run --name sparklab -it --rm --user root -e GRANT_SUDO=yes \
--p 8888:8888 -p 4040:4040 -p 4041:4041 -p 8050:8050 \
-jupyter/pyspark-notebook
+$ docker build -t my-pyspark-notebook .
 ```
+This will create the image with the necessary files and dependencies
+
+Then run the container,
+```bash
+$ docker run -it --rm -p 8888:8888 -p 8050:8050 my-pyspark-notebook
+```
+and follow the link that looks like *http://127.0.0.1:8888/lab?token=7abaa2f60f10a23ed9231adf452af2c3g713753f41a14896*
+
 
 ### Step 2: Run the project
 ```bash
@@ -52,14 +56,11 @@ $ python analyze.py
 ```
 We use Spark Streaming to perform sentiment analysis on news articles in real-time using TextBlob library. We retrieve articles via a socket connection (described above) and perform sentiment analysis on each article. For that we implement the "sentiment_analysis" function which is using TextBlob, and add the sentiment score to the article. The sentiment score ranges from -1 to 1, with negative scores indicating negative sentiment and positive scores indicating positive sentiment. We use these sentiment scores in streaming k-means clustering to group the articles based on their sentiment. The code prints and saves the cluster number along with the article's title and sentiment score to a CSV file. The resulting solution provides a scalable solution for monitoring news sentiment in real-time.
 
-### Step 3: Visualize data [scatter/bar plot]
+### Step 3: Visualize data
 
 ```bash
-# to run the bar-plot visualizations
-$ python visualize.py
-
 # to run the scatter-plot visualizations
-$ python scatter.py
+$ python visualize.py
 ```
 Click to the one of the generated links (the one running on the localhost: http://127.0.0.1:8050 works)
 
@@ -67,13 +68,12 @@ Click to the one of the generated links (the one running on the localhost: http:
 
 The code is designed to create a web application using Dash, a Python framework for building analytical web applications. The application displays a scatter/bar plot of the average sentiment per cluster based on data loaded from a CSV file called *'predictions.csv'*. The data is updated in real-time. 
 
-The layout of the app is defined using HTML and CSS styles. It includes a title, a button to reload the data, and a scatter plot. The scatter plot is created using the dcc.Graph component from Dash Core Components and is assigned the ID *'sentiment-per-cluster'*.
+The layout of the app is defined using HTML and CSS styles. It includes a title, a button to reload the data, the titles of the best and worst news and a scatter plot. The scatter plot is created using the dcc.Graph component from Dash Core Components and is assigned the ID *'sentiment-per-cluster'*.
 
-We define a callback function to update the bar/scatter plot when the reload button is clicked. The callback function takes the number of clicks on the reload button as an input and outputs an updated bar/scatter plot based on the updated data from the CSV file. The function calculates the average sentiment per cluster using the Pandas groupby function and creates a scatter plot using the Plotly Express library. The scatter plot is customized to show different colors for each cluster and is updated with a new title and axis labels.
+We define a callback function to update the scatter plot and the titles of the best/worst articles when the reload button is clicked. The callback function takes the number of clicks on the reload button as an input and outputs updated versions of the graph and the titles based on the updated data from the CSV file. The scatter plot is customized to show different colors for each cluster and is updated with a new title and axis labels.
 
 The app is run on a local server using the app.run_server() function with host, debug, and port settings. The app can be accessed through a web browser at the specified port. 
 
-**NOTE:** To run the visualizations, you need to specify the correct port in the code. If you indicate -p 8050:8050 when creating docker container, you should specify 8050 in the script. 
 
  <img width="1427" alt="Screenshot 2023-05-01 at 10 48 23 AM" src="https://user-images.githubusercontent.com/118912928/235431144-6122884e-be74-43f1-a38a-00c0a2e2706d.png">
 <img width="1414" alt="Screenshot 2023-05-01 at 10 48 12 AM" src="https://user-images.githubusercontent.com/118912928/235431152-5ec7167f-5d32-42c0-a45f-5804e675209a.png">
