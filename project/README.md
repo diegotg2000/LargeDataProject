@@ -13,8 +13,8 @@ This project involves processing API data as a stream, performing sentiment anal
 - `server.py` : Python server script to connect to the API and send individual messages to a socket.
 - `spark.py` and `analyze.py` : Spark Streaming script to read data, perform sentiment analysis, clustering, and window operations.
 - `main.ipynb` : Jupyter Notebook for visualizing the cluster sizes in sliding windows.
-- 'scatter.py': Run cluster visualizations (scatter-plot) in real-time, refreshes when the button is pressed.
-- 'visualize.py': Run cluster visualizations (bar-plot) in real-time, refreshes when the button is pressed.
+- `scatter.py`: Run cluster visualizations (scatter-plot) in real-time, refreshes when the button is pressed.
+- `visualize.py`: Run cluster visualizations (bar-plot) in real-time, refreshes when the button is pressed.
 
 ## Requirements
 - Python 3.x
