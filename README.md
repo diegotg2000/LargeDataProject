@@ -26,6 +26,7 @@ This project involves processing API data as a stream, performing sentiment anal
 ## Instructions
 ### Step 1: Get and set the API key
 Register and obtain access to [NEWS API](https://newsapi.org/), change the `NEWSAPI_KEY` variable of `server.py` with your API key (don't use ours more than a couple times please :3)
+
 ### Step 2: Set up the docker
 At the same level as the docker file run:
 ```bash
@@ -37,10 +38,10 @@ Then run the container,
 ```bash
 $ docker run -it --rm -p 8888:8888 -p 8050:8050 my-pyspark-notebook
 ```
-and follow the link that looks like *http://127.0.0.1:8888/lab?token=7abaa2f60f10a23ed9231adf452af2c3g713753f41a14896*
+and follow the link that looks like *http://127.0.0.1:8888/lab?token=7abaa2f60f10a23ed923*
 
 
-### Step 2: Run the project
+### Step 3: Run the project
 ```bash
 # to run the server
 $ python server.py
@@ -56,7 +57,7 @@ $ python analyze.py
 ```
 We use Spark Streaming to perform sentiment analysis on news articles in real-time using TextBlob library. We retrieve articles via a socket connection (described above) and perform sentiment analysis on each article. For that we implement the "sentiment_analysis" function which is using TextBlob, and add the sentiment score to the article. The sentiment score ranges from -1 to 1, with negative scores indicating negative sentiment and positive scores indicating positive sentiment. We use these sentiment scores in streaming k-means clustering to group the articles based on their sentiment. The code prints and saves the cluster number along with the article's title and sentiment score to a CSV file. The resulting solution provides a scalable solution for monitoring news sentiment in real-time.
 
-### Step 3: Visualize data
+### Step 4: Visualize data
 
 ```bash
 # to run the scatter-plot visualizations
